@@ -1,11 +1,13 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using MEC;
+using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using PrimeTween;
 
 namespace Script.Masak
 {
-    public class Food : MonoBehaviour
+    public class Food : SerializedMonoBehaviour
     {
         #region enums
 
@@ -37,7 +39,13 @@ namespace Script.Masak
         private FinishFoodTray _finishFoodTray;
         private CoroutineHandle _cookingCoroutine;
         
-        [SerializeField] private SpriteRenderer foodSpriteRenderer;
+        [OdinSerialize] private List<Sprite> _rawFoodVisual;
+        [OdinSerialize] private List<Sprite> _cookedFoodVisual;
+        private int _visualIndex;
+        
+        [OdinSerialize] private SpriteRenderer _foodSpriteRenderer;
+        
+        private Tween _colorTween;
 
         private void Awake()
         {
@@ -63,6 +71,7 @@ namespace Script.Masak
             var worldPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
             
             transform.position = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
+            transform.rotation = new Quaternion(0f, 0f, 180f,0);
         }
 
         public void InitFood()
@@ -71,6 +80,8 @@ namespace Script.Masak
             _canBeDragged = false;
             _foodLocation = FoodLocation.None;
             _foodState = FoodState.Raw;
+            _visualIndex = UnityEngine.Random.Range(0, _rawFoodVisual.Count);
+            _foodSpriteRenderer.sprite = _rawFoodVisual[_visualIndex];
         }
 
         public void StartDragging()
@@ -79,6 +90,11 @@ namespace Script.Masak
             if (_cookingCoroutine.IsValid)
             {
                 Timing.KillCoroutines(_cookingCoroutine);
+            }
+            
+            if(_colorTween.isAlive)
+            {
+                _colorTween.Stop();
             }
             
             _isDragged = true;
@@ -128,12 +144,12 @@ namespace Script.Masak
         private IEnumerator<float> StartCooking()
         {
             yield return Timing.WaitForSeconds(5f);
-            foodSpriteRenderer.color = Color.red;
+            _foodSpriteRenderer.sprite = _cookedFoodVisual[_visualIndex];
             _foodState = FoodState.Cooked;
             _canBeDragged = true; // Allow dragging immediately after cooking
 
+            _colorTween = Tween.Color(_foodSpriteRenderer, Color.black, 5f);
             yield return Timing.WaitForSeconds(5f);
-            foodSpriteRenderer.color = Color.gray;
             _foodState = FoodState.Burnt;
             _canBeDragged = true; // Ensure burnt food is still draggable
         }

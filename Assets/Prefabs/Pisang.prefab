@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2513950826220729587}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &8158142305320673738
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
+  m_Offset: {x: 0.028198421, y: -0.07817203}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -135,7 +135,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.4774956, y: 1.5790108}
   m_EdgeRadius: 0
 --- !u!50 &1980678591689889247
 Rigidbody2D:
@@ -176,7 +176,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebdbe19d8e91984d8fd13b8e9f6f5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodSpriteRenderer: {fileID: 8158142305320673738}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: -229057543, guid: 25dbd60fb88a6544a951bbc05ea4194f, type: 3}
+    - {fileID: 2146050135, guid: 25dbd60fb88a6544a951bbc05ea4194f, type: 3}
+    - {fileID: -716090733, guid: 25dbd60fb88a6544a951bbc05ea4194f, type: 3}
+    - {fileID: -227750955, guid: 25dbd60fb88a6544a951bbc05ea4194f, type: 3}
+    - {fileID: -1266280464, guid: c2923a54ba637084e887991be0f12641, type: 3}
+    - {fileID: -433788519, guid: c2923a54ba637084e887991be0f12641, type: 3}
+    - {fileID: 1098627465, guid: c2923a54ba637084e887991be0f12641, type: 3}
+    - {fileID: -1552383585, guid: c2923a54ba637084e887991be0f12641, type: 3}
+    - {fileID: 8158142305320673738}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _rawFoodVisual
+      Entry: 7
+      Data: 0|Unity.Plastic.Antlr3.Runtime.Misc.ListStack`1[[UnityEngine.Sprite,
+        UnityEngine.CoreModule]], Unity.Plastic.Antlr3.Runtime
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _cookedFoodVisual
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[UnityEngine.Sprite, UnityEngine.CoreModule]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 10
+      Data: 7
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _foodSpriteRenderer
+      Entry: 10
+      Data: 8
 --- !u!114 &4911442374484584973
 MonoBehaviour:
   m_ObjectHideFlags: 0
